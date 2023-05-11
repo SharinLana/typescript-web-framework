@@ -1,15 +1,8 @@
-import { User } from "./models/User";
+import axios from "axios";
 
-const user = new User({ name: "John", age: 25 });
-
-user.on("click", () => {
-  console.log("Click #1")
-})
-user.on("click", () => {
-  console.log("Click #2")
-})
-user.on("mouseover", () => {
-  console.log("Mouse over #1")
+axios.post("http://localhost:3000/users", {
+  name: "John Doe",
+  age: 30,
 })
 
-user.trigger("mouseover");
+// Network => Fetch/XHR => users
