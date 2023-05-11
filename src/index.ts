@@ -1,8 +1,8 @@
-import axios from "axios";
+import { User } from "./models/User";
 
-axios.post("http://localhost:3000/users", {
-  name: "John Doe",
-  age: 30,
-})
+const user = new User({ id: 1 });
 
-// Network => Fetch/XHR => users
+user.set({ name: "Helena", age: 39 });
+user.save();
+// check the result ib the browser => devtools => Fetch/XHR
+
