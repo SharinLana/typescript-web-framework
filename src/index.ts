@@ -6,4 +6,5 @@ user.on("change", () => {
 });
 user.trigger("change");
 
-console.log(user.get("name"));
+user.set({ age: 77 });
+console.log(user.get("age"));
