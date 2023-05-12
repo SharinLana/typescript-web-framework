@@ -1,8 +1,9 @@
 import { User } from "./models/User";
 
 const user = new User({ name: "Max", age: 76 });
-user.events.on("click", () => {
-  console.log("Clicked!")
+user.on("change", () => {
+  console.log("User changed");
 });
-user.events.trigger("click")
+user.trigger("change");
 
+console.log(user.get("name"))
