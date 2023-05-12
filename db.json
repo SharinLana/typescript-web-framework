@@ -6,9 +6,24 @@
       "age": 39
     },
     {
+      "id": 2,
+      "name": "Lea",
+      "age": 15
+    },
+    {
+      "name": "Lea",
+      "age": 15,
+      "id": 3
+    },
+    {
       "name": "Max",
-      "age": 76,
-      "id": 2
+      "age": 15,
+      "id": 4
+    },
+    {
+      "name": "Max",
+      "age": 1,
+      "id": 5
     }
   ]
 }
