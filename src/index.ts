@@ -6,4 +6,4 @@ user.on("change", () => {
 });
 user.trigger("change");
 
-console.log(user.get("name"))
+console.log(user.get("name"));
