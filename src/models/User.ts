@@ -1,6 +1,6 @@
 import { Eventing } from "./Eventing";
 import { Sync } from "./Sync";
-import {Attributes} from "./Attributes";
+import { Attributes } from "./Attributes";
 
 export interface UserProps {
   id?: number;
@@ -31,7 +31,8 @@ export class User {
     return this.attributes.get;
   }
 
-  set(update: UserProps)  {
+  set(update: UserProps): void {
     this.attributes.set(update);
+    this.events.trigger("change");
   }
 }

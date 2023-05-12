@@ -8,3 +8,4 @@ user.trigger("change");
 
 user.set({ age: 77 });
 console.log(user.get("age"));
+ 
