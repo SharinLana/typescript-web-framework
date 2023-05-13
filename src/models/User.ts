@@ -1,4 +1,7 @@
 import { Model } from "./Model";
+import { ApiSync } from "./ApiSync";
+import { Attributes } from "./Attributes";
+import { Eventing } from "./Eventing";
 
 export interface UserProps {
   id?: number;
@@ -8,4 +11,17 @@ export interface UserProps {
 
 const rootUrl = "http://localhost:3000/users"; // available in the console after running: npm rum start:db
 
-export class User extends Model<UserProps> {}
+export class User extends Model<UserProps> {
+  static buildUser(attrs: UserProps): User {
+    return new User(
+      new Attributes<UserProps>(attrs),
+      new Eventing(),
+      new ApiSync<UserProps>(rootUrl)
+    );
+  }
+}
+
+// const user = User.buildUser({});
+// user.get("id")
+// user.fetch(),
+// etc
