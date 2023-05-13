@@ -1,7 +1,4 @@
-import { AxiosResponse } from "axios";
-import { Eventing } from "./Eventing";
-import { Sync } from "./Sync";
-import { Attributes } from "./Attributes";
+import { Model } from "./Model";
 
 export interface UserProps {
   id?: number;
@@ -11,14 +8,4 @@ export interface UserProps {
 
 const rootUrl = "http://localhost:3000/users"; // available in the console after running: npm rum start:db
 
-export class User {
-  public events: Eventing = new Eventing();
-  public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-  public attributes: Attributes<UserProps>;
-
-  constructor(attrs: UserProps) {
-    this.attributes = new Attributes<UserProps>(attrs);
-  }
-
-  
-}
+export class User extends Model<UserProps> {}
