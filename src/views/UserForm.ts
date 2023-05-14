@@ -11,6 +11,18 @@ export class UserForm {
     console.log("Hi there!");
   }
 
+  bindEvents(fragment: DocumentFragment): void {
+    const eventsMap = this.eventsMap();
+
+    for (let eventKey in eventsMap) {
+      const [eventName, selector] = eventKey.split(":");
+
+      fragment.querySelectorAll(selector).forEach((element) => {
+        element.addEventListener(eventName, eventsMap[eventKey]);
+      });
+    }
+  }
+
   template(): string {
     return `
     <div>
@@ -24,6 +36,8 @@ export class UserForm {
   render(): void {
     const templateElem = document.createElement("template");
     templateElem.innerHTML = this.template();
+
+    this.bindEvents(templateElem.content);
 
     this.parent.append(templateElem.content);
   }
