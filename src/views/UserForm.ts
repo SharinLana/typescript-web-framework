@@ -4,11 +4,16 @@ export class UserForm {
   eventsMap(): { [key: string]: () => void } {
     return {
       "click:button": this.onButtonClick,
+      "mouseover:h1": this.onHeaderHover,
     };
   }
 
   onButtonClick(): void {
     console.log("Hi there!");
+  }
+
+  onHeaderHover(): void {
+    console.log("Hovered!");
   }
 
   bindEvents(fragment: DocumentFragment): void {
