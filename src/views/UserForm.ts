@@ -1,7 +1,11 @@
 import { User } from "../models/User";
 
 export class UserForm {
-  constructor(public parent: Element, public model: User) {}
+  constructor(public parent: Element, public model: User) {
+    this.model.on("change", () => {
+      this.render(); // re-rendering the HTML element on every change event (e.g. when setting the new random age)
+    });
+  }
 
   eventsMap(): { [key: string]: () => void } {
     return {
@@ -11,7 +15,7 @@ export class UserForm {
 
   onSetAgeClick = (): void => {
     this.model.setRandomAge();
-  }
+  };
 
   bindEvents(fragment: DocumentFragment): void {
     const eventsMap = this.eventsMap();
@@ -39,6 +43,9 @@ export class UserForm {
   }
 
   render(): void {
+    // empty the parent element on each re-render
+    this.parent.innerHTML = '';
+    
     const templateElem = document.createElement("template");
     templateElem.innerHTML = this.template();
 
