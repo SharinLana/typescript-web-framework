@@ -1,21 +1,16 @@
-import {User} from "../models/User"
+import { User } from "../models/User";
 
 export class UserForm {
   constructor(public parent: Element, public model: User) {}
 
   eventsMap(): { [key: string]: () => void } {
     return {
-      "click:button": this.onButtonClick,
-      "mouseover:h1": this.onHeaderHover,
+      "click:#set-age": this.onSetAgeClick,
     };
   }
 
-  onButtonClick(): void {
-    console.log("Hi there!");
-  }
-
-  onHeaderHover(): void {
-    console.log("Hovered!");
+  onSetAgeClick(): void {
+    console.log("Set Age clicked!");
   }
 
   bindEvents(fragment: DocumentFragment): void {
@@ -38,6 +33,7 @@ export class UserForm {
       <p>User age: ${this.model.get("age")}</p>
       <input />
       <button>Click</button>
+      <button id="set-age">Set random age</button>
     </div>
     `;
   }
