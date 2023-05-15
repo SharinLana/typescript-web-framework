@@ -10,8 +10,16 @@ export class UserForm {
   eventsMap(): { [key: string]: () => void } {
     return {
       "click:#set-age": this.onSetAgeClick,
+      "click:.set-name": this.onSetNameClick,
     };
   }
+
+  onSetNameClick = (): void => {
+    const input = this.parent.querySelector("input");
+    const newName = input?.value;
+
+    this.model.set({ name: newName });
+  };
 
   onSetAgeClick = (): void => {
     this.model.setRandomAge();
@@ -36,7 +44,7 @@ export class UserForm {
       <p>User name: ${this.model.get("name")}</p>
       <p>User age: ${this.model.get("age")}</p>
       <input />
-      <button>Click</button>
+      <button class="set-name">Change name</button>
       <button id="set-age">Set random age</button>
     </div>
     `;
@@ -44,8 +52,8 @@ export class UserForm {
 
   render(): void {
     // empty the parent element on each re-render
-    this.parent.innerHTML = '';
-    
+    this.parent.innerHTML = "";
+
     const templateElem = document.createElement("template");
     templateElem.innerHTML = this.template();
 
