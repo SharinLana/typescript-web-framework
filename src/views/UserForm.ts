@@ -1,12 +1,7 @@
 import { User } from "../models/User";
+import { View } from "./View";
 
-export class UserForm {
-  constructor(public parent: Element, public model: User) {
-    this.model.on("change", () => {
-      this.render(); // re-rendering the HTML element on every change event (e.g. when setting the new random age)
-    });
-  }
-
+export class UserForm extends View {
   eventsMap(): { [key: string]: () => void } {
     return {
       "click:#set-age": this.onSetAgeClick,
