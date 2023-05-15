@@ -3,6 +3,11 @@ import { User } from "./models/User";
 
 const user = User.buildUser({ name: "Pippa", age: 18 });
 
-const userForm = new UserForm(document.querySelector("#root"), user);
+const root = document.querySelector("#root");
 
-userForm.render();
+if (root) {
+  const userForm = new UserForm(root, user);
+  userForm.render();
+} else {
+  throw new Error("Root element not found");
+}
