@@ -1,7 +1,7 @@
-import { User } from "../models/User";
+import { Model, HasId } from "../models/Model";
 
-export abstract class View {
-  constructor(public parent: Element, public model: User) {
+export abstract class View<T extends Model<K>, K extends HasId> {
+  constructor(public parent: Element, public model: T) {
     this.model.on("change", () => {
       this.render(); // re-rendering the HTML element on every change event (e.g. when setting the new random age)
     });
