@@ -27,18 +27,6 @@ export class UserForm {
     this.model.setRandomAge();
   };
 
-  bindEvents(fragment: DocumentFragment): void {
-    const eventsMap = this.eventsMap();
-
-    for (let eventKey in eventsMap) {
-      const [eventName, selector] = eventKey.split(":");
-
-      fragment.querySelectorAll(selector).forEach((element) => {
-        element.addEventListener(eventName, eventsMap[eventKey]);
-      });
-    }
-  }
-
   template(): string {
     return `
     <div>
@@ -50,17 +38,5 @@ export class UserForm {
       <button id="set-age">Set random age</button>
     </div>
     `;
-  }
-
-  render(): void {
-    // empty the parent element on each re-render
-    this.parent.innerHTML = "";
-
-    const templateElem = document.createElement("template");
-    templateElem.innerHTML = this.template();
-
-    this.bindEvents(templateElem.content);
-
-    this.parent.append(templateElem.content);
   }
 }
