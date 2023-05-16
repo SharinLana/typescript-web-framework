@@ -44,6 +44,10 @@ export abstract class View<T extends Model<K>, K extends HasId> {
     }
   }
 
+  onRender(): void {
+    
+  }
+
   render(): void {
     // empty the parent element on each re-render
     this.parent.innerHTML = "";
@@ -53,6 +57,7 @@ export abstract class View<T extends Model<K>, K extends HasId> {
 
     this.bindEvents(templateElem.content);
     this.mapRegions(templateElem.content);
+    this.onRender()
 
     this.parent.append(templateElem.content);
   }
